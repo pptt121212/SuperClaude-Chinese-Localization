@@ -76,23 +76,47 @@ check_superclaude() {
     
     if [[ ! -d "${CLAUDE_DIR}" ]]; then
         log_error "未找到SuperClaude安装目录: ${CLAUDE_DIR}"
-        log_error "请先安装SuperClaude"
+        log_error "请先安装原版SuperClaude插件"
+        log_error "原版项目地址: https://github.com/SuperClaude-Org/SuperClaude_Framework"
         log_error "安装完成后重新运行此脚本"
         exit 1
     fi
     
-    # 检查SuperClaude的关键文件（更宽松的检查）
-    local claude_found=false
-    for key_file in "${CLAUDE_DIR}/CLAUDE.md" "${CLAUDE_DIR}/FLAGS.md" "${CLAUDE_DIR}/PRINCIPLES.md"; do
-        if [[ -f "$key_file" ]]; then
-            claude_found=true
+    # 检查SuperClaude的标识文件
+    local metadata_file="${CLAUDE_DIR}/.superclaude-metadata.json"
+    local claude_config_file="${CLAUDE_DIR}/CLAUDE.md"
+    
+    if [[ ! -f "$metadata_file" ]]; then
+        log_error "未找到SuperClaude的元数据文件: $metadata_file"
+        log_error "这可能表明您未安装原版SuperClaude或安装不完整"
+        log_error "请先安装原版SuperClaude: https://github.com/SuperClaude-Org/SuperClaude_Framework"
+        exit 1
+    fi
+    
+    # 验证元数据文件内容
+    if ! grep -q "SuperClaude" "$metadata_file" 2>/dev/null; then
+        log_error "元数据文件格式不正确，请确保安装了原版SuperClaude"
+        exit 1
+    fi
+    
+    # 检查关键配置文件（至少需要一个）
+    local config_found=false
+    for config_file in "$claude_config_file" "${CLAUDE_DIR}/FLAGS.md" "${CLAUDE_DIR}/PRINCIPLES.md"; do
+        if [[ -f "$config_file" ]]; then
+            config_found=true
             break
         fi
     done
     
-    if [[ "$claude_found" = false ]]; then
-        log_warning "未找到SuperClaude配置文件，可能未正确安装"
-        log_info "继续安装，但请确保SuperClaude已正确安装"
+    if [[ "$config_found" = false ]]; then
+        log_warning "未找到SuperClaude配置文件，可能安装不完整"
+        log_info "建议重新安装原版SuperClaude"
+    fi
+    
+    # 提取版本信息
+    local version=$(grep -o '"version": *"[^"]*"' "$metadata_file" | head -1 | cut -d'"' -f4)
+    if [[ -n "$version" ]]; then
+        log_success "检测到SuperClaude版本: $version"
     fi
     
     log_success "SuperClaude安装验证通过"
@@ -179,9 +203,13 @@ show_install_info() {
     echo "  ${INSTALL_DIR}/localize.sh"
     echo
     echo "注意事项:"
-    echo "1. 请确保已正确安装SuperClaude"
+    echo "1. 请确保已正确安装原版SuperClaude"
     echo "2. 汉化前会自动创建备份"
     echo "3. 如需恢复，运行恢复命令即可"
+    echo
+    echo "原版SuperClaude安装方法:"
+    echo "  pipx install SuperClaude && SuperClaude install"
+    echo "  或访问: https://github.com/SuperClaude-Org/SuperClaude_Framework"
     echo
     echo -e "${GREEN}🎉 安装完成！${NC}"
 }

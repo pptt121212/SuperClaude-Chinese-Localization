@@ -4,7 +4,7 @@
 # 版本: 1.0.0
 # 作者: SuperClaude-Chinese-Localization Team
 # 
-# 使用方法: curl -sSL https://raw.githubusercontent.com/yourusername/SuperClaude-Chinese-Localization/main/install.sh | bash
+# 使用方法: curl -sSL https://raw.githubusercontent.com/pptt121212/SuperClaude-Chinese-Localization/main/install.sh | bash
 
 set -e
 
@@ -16,7 +16,7 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # 配置变量
-REPO_URL="https://github.com/yourusername/SuperClaude-Chinese-Localization.git"
+REPO_URL="https://github.com/pptt121212/SuperClaude-Chinese-Localization.git"
 REPO_BRANCH="main"
 INSTALL_DIR="$HOME/SuperClaude-Chinese-Localization"
 CLAUDE_DIR="$HOME/.claude"

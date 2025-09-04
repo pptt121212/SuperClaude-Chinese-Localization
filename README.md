@@ -8,8 +8,8 @@
 **🔧 一键安装，安全备份，完整汉化**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![GitHub stars](https://img.shields.io/github/stars/yourusername/SuperClaude-Chinese-Localization?style=social)](https://github.com/yourusername/SuperClaude-Chinese-Localization)
-[![GitHub forks](https://img.shields.io/github/forks/yourusername/SuperClaude-Chinese-Localization?style=social)](https://github.com/yourusername/SuperClaude-Chinese-Localization)
+[![GitHub stars](https://img.shields.io/github/stars/pptt121212/SuperClaude-Chinese-Localization?style=social)](https://github.com/pptt121212/SuperClaude-Chinese-Localization)
+[![GitHub forks](https://img.shields.io/github/forks/pptt121212/SuperClaude-Chinese-Localization?style=social)](https://github.com/pptt121212/SuperClaude-Chinese-Localization)
 
 </div>
 
@@ -82,13 +82,13 @@ SuperClaude Chinese Localization 是一个专为 SuperClaude 设计的无侵入�
 
 ### 方法一：一键安装（推荐）
 ```bash
-curl -sSL https://raw.githubusercontent.com/yourusername/SuperClaude-Chinese-Localization/main/install.sh | bash
+curl -sSL https://raw.githubusercontent.com/pptt121212/SuperClaude-Chinese-Localization/main/install.sh | bash
 ```
 
 ### 方法二：手动安装
 ```bash
 # 克隆仓库
-git clone https://github.com/yourusername/SuperClaude-Chinese-Localization.git
+git clone https://github.com/pptt121212/SuperClaude-Chinese-Localization.git
 cd SuperClaude-Chinese-Localization
 
 # 运行安装脚本
@@ -99,7 +99,7 @@ chmod +x install.sh
 ### 方法三：直接使用
 ```bash
 # 克隆仓库
-git clone https://github.com/yourusername/SuperClaude-Chinese-Localization.git
+git clone https://github.com/pptt121212/SuperClaude-Chinese-Localization.git
 cd SuperClaude-Chinese-Localization
 
 # 直接运行汉化脚本
@@ -204,7 +204,7 @@ SuperClaude-Chinese-Localization/
 
 ### 方法一：重新安装
 ```bash
-curl -sSL https://raw.githubusercontent.com/yourusername/SuperClaude-Chinese-Localization/main/install.sh | bash
+curl -sSL https://raw.githubusercontent.com/pptt121212/SuperClaude-Chinese-Localization/main/install.sh | bash
 ```
 
 ### 方法二：Git 更新
@@ -255,7 +255,7 @@ A: 可以手动删除旧备份文件，保留最新的即可。
 ### 开发环境设置
 ```bash
 # 克隆仓库
-git clone https://github.com/yourusername/SuperClaude-Chinese-Localization.git
+git clone https://github.com/pptt121212/SuperClaude-Chinese-Localization.git
 cd SuperClaude-Chinese-Localization
 
 # 创建开发分支

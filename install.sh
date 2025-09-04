@@ -46,12 +46,18 @@ check_dependencies() {
     # 检查git
     if ! command -v git &> /dev/null; then
         log_error "未找到 git 命令，请先安装 git"
+        log_error "Ubuntu/Debian: sudo apt-get install git"
+        log_error "CentOS/RHEL: sudo yum install git"
+        log_error "macOS: brew install git"
         exit 1
     fi
     
     # 检查curl
     if ! command -v curl &> /dev/null; then
         log_error "未找到 curl 命令，请先安装 curl"
+        log_error "Ubuntu/Debian: sudo apt-get install curl"
+        log_error "CentOS/RHEL: sudo yum install curl"
+        log_error "macOS: brew install curl"
         exit 1
     fi
     
@@ -71,12 +77,22 @@ check_superclaude() {
     if [[ ! -d "${CLAUDE_DIR}" ]]; then
         log_error "未找到SuperClaude安装目录: ${CLAUDE_DIR}"
         log_error "请先安装SuperClaude"
+        log_error "安装完成后重新运行此脚本"
         exit 1
     fi
     
-    if [[ ! -f "${CLAUDE_DIR}/.superclaude-metadata.json" ]]; then
-        log_error "未找到SuperClaude元数据文件，请确保SuperClaude已正确安装"
-        exit 1
+    # 检查SuperClaude的关键文件（更宽松的检查）
+    local claude_found=false
+    for key_file in "${CLAUDE_DIR}/CLAUDE.md" "${CLAUDE_DIR}/FLAGS.md" "${CLAUDE_DIR}/PRINCIPLES.md"; do
+        if [[ -f "$key_file" ]]; then
+            claude_found=true
+            break
+        fi
+    done
+    
+    if [[ "$claude_found" = false ]]; then
+        log_warning "未找到SuperClaude配置文件，可能未正确安装"
+        log_info "继续安装，但请确保SuperClaude已正确安装"
     fi
     
     log_success "SuperClaude安装验证通过"
@@ -157,6 +173,7 @@ show_install_info() {
     echo "  superclaude-localize    # 启动交互式界面"
     echo "  superclaude-localize -i # 直接安装汉化"
     echo "  superclaude-localize -r # 恢复原始状态"
+    echo "  superclaude-localize -c # 检查系统状态"
     echo
     echo "或者直接运行:"
     echo "  ${INSTALL_DIR}/localize.sh"
@@ -196,13 +213,45 @@ main() {
     # 显示安装信息
     show_install_info
     
-    # 询问是否立即运行
-    echo
-    read -p "是否立即运行汉化工具? (y/N): " -n 1 -r
-    echo
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
-        "${INSTALL_DIR}/localize.sh"
+    # 询问是否立即运行（仅在终端模式下）
+    prompt_for_launch
+}
+
+# 询问是否立即运行（智能检测执行环境）
+prompt_for_launch() {
+    # 检查是否在终端中运行（有交互能力）
+    if [[ -t 0 ]]; then
+        echo
+        read -p "是否立即运行汉化工具? (y/N): " -n 1 -r
+        echo
+        if [[ $REPLY =~ ^[Yy]$ ]]; then
+            "${INSTALL_DIR}/localize.sh"
+        else
+            show_next_steps
+        fi
+    else
+        # 管道运行模式，显示后续步骤
+        show_next_steps
     fi
+}
+
+# 显示后续步骤
+show_next_steps() {
+    echo
+    echo "🚀 现在可以开始使用汉化工具了："
+    echo
+    echo "推荐方式："
+    echo "  superclaude-localize          # 启动交互式界面"
+    echo
+    echo "快速操作："
+    echo "  superclaude-localize -i       # 直接安装汉化"
+    echo "  superclaude-localize -r       # 恢复原始状态"
+    echo "  superclaude-localize -c       # 检查系统状态"
+    echo
+    echo "或者直接运行："
+    echo "  ${INSTALL_DIR}/localize.sh"
+    echo
+    echo -e "${BLUE}💡 提示: 如果遇到问题，请运行 superclaude-localize -h 查看帮助${NC}"
 }
 
 # 运行主函数

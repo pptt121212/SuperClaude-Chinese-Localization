@@ -17,6 +17,9 @@
 
 SuperClaude Chinese Localization 是一个专为 SuperClaude 设计的无侵入式汉化工具。它提供完整的中文界面翻译，包括命令描述、代理文档、模式说明、MCP 服务器文档等，同时支持一键备份和恢复功能。
 
+### 🏢 原版项目
+本项目基于 [SuperClaude Framework](https://github.com/SuperClaude-Org/SuperClaude_Framework) 开发，是 SuperClaude 的官方汉化版本。
+
 ## ✨ 主要特性
 
 - 🎯 **无侵入式汉化** - 保持原有功能，仅替换界面文本
@@ -271,14 +274,26 @@ chmod +x localize.sh install.sh
 
 ## 🙏 致谢
 
-- 感谢 SuperClaude 团队提供优秀的 AI 助手
-- 感谢所有贡献者的辛勤付出
+- 感谢 [SuperClaude Framework](https://github.com/SuperClaude-Org/SuperClaude_Framework) 团队提供优秀的 AI 助手框架
+- 感谢原版项目开发者的辛勤工作和开源贡献
+- 感谢所有汉化贡献者的翻译和优化工作
 - 感谢社区用户的反馈和支持
+
+## 🔗 相关链接
+
+### 🏢 原版项目
+- **SuperClaude Framework**: https://github.com/SuperClaude-Org/SuperClaude_Framework
+- **原版文档**: https://github.com/SuperClaude-Org/SuperClaude_Framework
+
+### 📋 汉化项目
+- **GitHub仓库**: https://github.com/pptt121212/SuperClaude-Chinese-Localization
+- **在线文档**: https://github.com/pptt121212/SuperClaude-Chinese-Localization/blob/main/README.md
+- **问题反馈**: https://github.com/pptt121212/SuperClaude-Chinese-Localization/issues
 
 ## 📞 联系我们
 
 - 📧 Email: your.email@example.com
-- 💬 Issues: [GitHub Issues](https://github.com/yourusername/SuperClaude-Chinese-Localization/issues)
+- 💬 Issues: [GitHub Issues](https://github.com/pptt121212/SuperClaude-Chinese-Localization/issues)
 - 🐙 Twitter: [@yourusername](https://twitter.com/yourusername)
 
 ---

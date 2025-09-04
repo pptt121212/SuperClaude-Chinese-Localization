@@ -3,6 +3,7 @@
 # SuperClaude 快速汉化脚本
 # 版本: 1.0.0
 # 作者: SuperClaude-Chinese-Localization Team
+# 基于: SuperClaude Framework (https://github.com/SuperClaude-Org/SuperClaude_Framework)
 # 
 # 使用方法: curl -sSL https://raw.githubusercontent.com/pptt121212/SuperClaude-Chinese-Localization/main/install.sh | bash
 

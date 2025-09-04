@@ -1,0 +1,214 @@
+{
+  "commands": {
+    "config": {
+      "description": "管理配置",
+      "help": "管理配置 (例如：claude config set -g theme dark)",
+      "subcommands": {
+        "set": {
+          "description": "设置配置值",
+          "help": "设置配置选项"
+        },
+        "get": {
+          "description": "获取配置值", 
+          "help": "获取当前配置值"
+        },
+        "unset": {
+          "description": "取消设置配置值",
+          "help": "移除配置选项"
+        },
+        "list": {
+          "description": "列出所有配置",
+          "help": "显示所有配置选项"
+        }
+      }
+    },
+    "mcp": {
+      "description": "配置和管理 MCP 服务器",
+      "help": "配置和管理 MCP 服务器",
+      "subcommands": {
+        "add": {
+          "description": "添加 MCP 服务器",
+          "help": "添加新的 MCP 服务器配置"
+        },
+        "remove": {
+          "description": "移除 MCP 服务器",
+          "help": "删除 MCP 服务器配置"
+        },
+        "list": {
+          "description": "列出 MCP 服务器",
+          "help": "显示所有配置的 MCP 服务器"
+        },
+        "test": {
+          "description": "测试 MCP 服务器",
+          "help": "测试 MCP 服务器连接"
+        }
+      }
+    },
+    "migrate-installer": {
+      "description": "从全局 npm 安装迁移到本地安装",
+      "help": "将 Claude Code 从全局 npm 安装迁移到本地安装"
+    },
+    "setup-token": {
+      "description": "设置长期身份验证令牌",
+      "help": "设置长期身份验证令牌（需要 Claude 订阅）"
+    },
+    "doctor": {
+      "description": "检查 Claude Code 自动更新器的健康状态",
+      "help": "检查 Claude Code 自动更新器的健康状态"
+    },
+    "update": {
+      "description": "检查更新并安装可用更新",
+      "help": "检查更新并安装可用更新"
+    },
+    "install": {
+      "description": "安装 Claude Code 原生构建",
+      "help": "安装 Claude Code 原生构建。使用 [target] 指定版本（stable、latest 或特定版本）"
+    }
+  },
+  "options": {
+    "--add-dir": {
+      "description": "添加允许工具访问的目录",
+      "help": "允许工具访问的其他目录"
+    },
+    "--allowed-tools": {
+      "description": "允许的工具列表",
+      "help": "逗号或空格分隔的工具名称列表（例如 \"Bash(git:*) Edit\"）"
+    },
+    "--append-system-prompt": {
+      "description": "附加系统提示",
+      "help": "将系统提示附加到默认系统提示"
+    },
+    "--continue": {
+      "description": "继续最近的对话",
+      "help": "继续最近的对话"
+    },
+    "--debug": {
+      "description": "启用调试模式",
+      "help": "启用调试模式，可选类别过滤（例如 \"api,hooks\" 或 \"!statsig,!file\"）"
+    },
+    "--dangerously-skip-permissions": {
+      "description": "绕过所有权限检查",
+      "help": "绕过所有权限检查。建议仅在没有互联网访问的沙箱中使用"
+    },
+    "--disallowed-tools": {
+      "description": "禁用的工具列表",
+      "help": "逗号或空格分隔的工具名称列表（例如 \"Bash(git:*) Edit\"）"
+    },
+    "--fallback-model": {
+      "description": "备用模型",
+      "help": "当默认模型过载时启用自动回退到指定模型（仅适用于 --print）"
+    },
+    "--ide": {
+      "description": "自动连接到 IDE",
+      "help": "启动时自动连接到 IDE（如果恰好有一个有效的 IDE 可用）"
+    },
+    "--input-format": {
+      "description": "输入格式",
+      "help": "输入格式（仅适用于 --print）：\"text\"（默认）或 \"stream-json\"（实时流输入）"
+    },
+    "--mcp-config": {
+      "description": "加载 MCP 服务器配置",
+      "help": "从 JSON 文件或字符串加载 MCP 服务器（空格分隔）"
+    },
+    "--mcp-debug": {
+      "description": "启用 MCP 调试模式",
+      "help": "[已弃用。使用 --debug 代替] 启用 MCP 调试模式（显示 MCP 服务器错误）"
+    },
+    "--model": {
+      "description": "当前会话的模型",
+      "help": "当前会话的模型。提供最新模型的别名（例如 'sonnet' 或 'opus'）或模型的完整名称（例如 'claude-sonnet-4-20250514'）"
+    },
+    "--output-format": {
+      "description": "输出格式",
+      "help": "输出格式（仅适用于 --print）：\"text\"（默认）、\"json\"（单个结果）或 \"stream-json\"（实时流）"
+    },
+    "--permission-mode": {
+      "description": "会话权限模式",
+      "help": "会话使用的权限模式"
+    },
+    "--print": {
+      "description": "打印响应并退出",
+      "help": "打印响应并退出（对管道有用）。注意：当 Claude 以 -p 模式运行时，会跳过工作区信任对话框。仅在你信任的目录中使用此标志"
+    },
+    "--replay-user-messages": {
+      "description": "重新发送用户消息",
+      "help": "从 stdin 重新发送用户消息到 stdout 以进行确认（仅适用于 --input-format=stream-json 和 --output-format=stream-json）"
+    },
+    "--resume": {
+      "description": "恢复对话",
+      "help": "恢复对话 - 提供会话 ID 或交互式选择要恢复的对话"
+    },
+    "--session-id": {
+      "description": "使用特定的会话 ID",
+      "help": "为对话使用特定的会话 ID（必须是有效的 UUID）"
+    },
+    "--settings": {
+      "description": "加载设置",
+      "help": "设置 JSON 文件的路径或要从中加载额外设置的 JSON 字符串"
+    },
+    "--strict-mcp-config": {
+      "description": "严格 MCP 配置",
+      "help": "仅使用来自 --mcp-config 的 MCP 服务器，忽略所有其他 MCP 配置"
+    },
+    "--verbose": {
+      "description": "覆盖详细模式设置",
+      "help": "覆盖配置中的详细模式设置"
+    },
+    "--version": {
+      "description": "输出版本号",
+      "help": "输出版本号"
+    },
+    "--help": {
+      "description": "显示命令帮助",
+      "help": "显示命令帮助"
+    }
+  },
+  "arguments": {
+    "prompt": {
+      "description": "你的提示",
+      "help": "你的提示内容"
+    }
+  },
+  "permission_modes": {
+    "acceptEdits": {
+      "description": "接受编辑",
+      "help": "自动接受所有编辑操作"
+    },
+    "bypassPermissions": {
+      "description": "绕过权限",
+      "help": "绕过所有权限检查"
+    },
+    "default": {
+      "description": "默认",
+      "help": "使用默认权限设置"
+    },
+    "plan": {
+      "description": "计划模式",
+      "help": "使用计划模式进行操作"
+    }
+  },
+  "output_formats": {
+    "text": {
+      "description": "文本格式",
+      "help": "纯文本输出格式"
+    },
+    "json": {
+      "description": "JSON 格式",
+      "help": "单个 JSON 结果格式"
+    },
+    "stream-json": {
+      "description": "流式 JSON 格式",
+      "help": "实时流式 JSON 格式"
+    }
+  },
+  "input_formats": {
+    "text": {
+      "description": "文本格式",
+      "help": "纯文本输入格式"
+    },
+    "stream-json": {
+      "description": "流式 JSON 格式",
+      "help": "实时流式 JSON 输入格式"
+    }
+  }
+}
